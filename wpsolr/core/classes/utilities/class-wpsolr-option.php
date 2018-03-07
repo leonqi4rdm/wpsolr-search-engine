@@ -2414,7 +2414,9 @@ class WPSOLR_Option {
 	 */
 	public function get_option_locking_index_models( $index_uuid ) {
 		//wp_cache_delete( self::OPTION_LOCKING, 'options' ); // not working
-		wp_cache_flush(); //necessary!
+		//wp_cache_flush(); //necessary!
+		wp_cache_delete( self::OPTION_LOCKING ); 
+		//It doesn't seem anywhere defines 'options' group for OPTION_LOCKING, so wp_cache_delete( self::OPTION_LOCKING, 'options' ) is not working. Use default group instead to eliminate redis flush requests
 
 		return $this->get_option_value( false, __FUNCTION__, self::OPTION_LOCKING, $index_uuid, [] );
 	}
