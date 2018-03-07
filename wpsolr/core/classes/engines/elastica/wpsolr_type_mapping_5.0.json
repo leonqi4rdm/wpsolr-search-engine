@@ -1,0 +1,219 @@
+{
+  "dynamic_templates": [
+    {
+      "text_en": {
+        "match": "text",
+        "mapping": {
+          "type": "text",
+          "analyzer": "english"
+        }
+      }
+    },
+    {
+      "*_i": {
+        "match": "*_i",
+        "mapping": {
+          "type": "integer"
+        }
+      }
+    },
+    {
+      "*_s": {
+        "match": "*_s",
+        "mapping": {
+          "type": "keyword"
+        }
+      }
+    },
+    {
+      "*_str": {
+        "match": "*_str",
+        "mapping": {
+          "type": "keyword"
+        }
+      }
+    },
+    {
+      "*_l": {
+        "match": "*_l",
+        "mapping": {
+          "type": "long"
+        }
+      }
+    },
+    {
+      "*_t": {
+        "match": "*_t",
+        "mapping": {
+          "type": "text"
+        }
+      }
+    },
+    {
+      "*_b": {
+        "match": "*_b",
+        "mapping": {
+          "type": "boolean"
+        }
+      }
+    },
+    {
+      "*_f": {
+        "match": "*_f",
+        "mapping": {
+          "type": "float"
+        }
+      }
+    },
+    {
+      "*_d": {
+        "match": "*_d",
+        "mapping": {
+          "type": "double"
+        }
+      }
+    },
+    {
+      "*_dt": {
+        "match": "*_dt",
+        "mapping": {
+          "type": "date"
+        }
+      }
+    },
+    {
+      "*_ll": {
+        "match": "*_ll",
+        "mapping": {
+          "type": "geo_point"
+        }
+      }
+    }
+  ],
+  "properties": {
+    "id": {
+      "type": "keyword",
+      "include_in_all": false
+    },
+    "PID": {
+      "type": "keyword",
+      "include_in_all": false
+    },
+    "blogid": {
+      "type": "keyword",
+      "include_in_all": false
+    },
+    "blogdomain": {
+      "type": "keyword",
+      "include_in_all": false
+    },
+    "blogpath": {
+      "type": "keyword",
+      "include_in_all": false
+    },
+    "wp": {
+      "type": "keyword",
+      "include_in_all": false
+    },
+    "permalink": {
+      "type": "keyword",
+      "copy_to": [
+        "text"
+      ],
+      "include_in_all": false
+    },
+    "title": {
+      "type": "text",
+      "copy_to": [
+        "text",
+        "spell",
+        "autocomplete"
+      ],
+      "include_in_all": false
+    },
+    "content": {
+      "type": "text",
+      "copy_to": [
+        "text",
+        "spell",
+        "autocomplete"
+      ],
+      "include_in_all": false
+    },
+    "numcomments": {
+      "type": "integer",
+      "include_in_all": false
+    },
+    "comments": {
+      "type": "text",
+      "include_in_all": false
+    },
+    "categories": {
+      "type": "keyword",
+      "copy_to": [
+        "text",
+        "spell",
+        "autocomplete"
+      ],
+      "include_in_all": false
+    },
+    "categoriessrch": {
+      "type": "text",
+      "include_in_all": false
+    },
+    "tags": {
+      "type": "keyword",
+      "copy_to": [
+        "text",
+        "spell",
+        "autocomplete"
+      ],
+      "include_in_all": false
+    },
+    "tagssrch": {
+      "type": "text",
+      "include_in_all": false
+    },
+    "author": {
+      "type": "keyword",
+      "include_in_all": false
+    },
+    "type": {
+      "type": "keyword",
+      "include_in_all": false
+    },
+    "date": {
+      "type": "date",
+      "include_in_all": false
+    },
+    "modified": {
+      "type": "date",
+      "include_in_all": false
+    },
+    "displaydate": {
+      "type": "date",
+      "include_in_all": false
+    },
+    "displaymodified": {
+      "type": "date",
+      "include_in_all": false
+    },
+    "spell": {
+      "type": "text",
+      "analyzer": "wpsolr_analyser_did_you_mean"
+    },
+    "autocomplete": {
+      "type": "completion"
+    },
+    "text": {
+      "type": "text",
+      "include_in_all": false
+    }
+  },
+  "properties_ingest_attachment": {
+    "id": {
+      "type": "keyword",
+      "include_in_all": false
+    }
+  }
+}

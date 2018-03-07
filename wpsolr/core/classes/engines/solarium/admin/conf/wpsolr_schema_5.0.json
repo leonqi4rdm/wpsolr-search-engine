@@ -1,0 +1,186 @@
+{
+  "add-field-type": {
+    "name": "alphaOnlySort",
+    "class": "solr.TextField",
+    "omitNorms": true,
+    "sortMissingLast": true,
+    "analyzer": {
+      "tokenizer": {
+        "class": "solr.KeywordTokenizerFactory"
+      },
+      "filters": [
+        {
+          "class": "solr.LowerCaseFilterFactory"
+        },
+        {
+          "class": "solr.TrimFilterFactory"
+        },
+        {
+          "class": "solr.PatternReplaceFilterFactory",
+          "pattern": "([^a-z])",
+          "replace": "all",
+          "replacement": ""
+        }
+      ]
+    }
+  },
+  "add-field-type": {
+    "name": "boolean",
+    "class": "solr.BoolField",
+    "omitNorms": true,
+    "sortMissingLast": true
+  },
+  "add-field-type": {
+    "name": "date",
+    "class": "solr.TrieDateField",
+    "omitNorms": true,
+    "sortMissingLast": true
+  },
+  "add-field-type": {
+    "name": "double",
+    "class": "solr.TrieDoubleField",
+    "omitNorms": true
+  },
+  "add-field-type": {
+    "name": "float",
+    "class": "solr.TrieFloatField",
+    "omitNorms": true
+  },
+  "add-field-type": {
+    "name": "ignored",
+    "class": "solr.StrField",
+    "indexed": false,
+    "stored": false,
+    "multiValued": true
+  },
+  "add-field-type": {
+    "name": "integer",
+    "class": "solr.TrieIntField",
+    "omitNorms": true
+  },
+  "add-field-type": {
+    "name": "latitude_longitude",
+    "class": "solr.LatLonType",
+    "subFieldSuffix": "_coordinate"
+  },
+  "add-dynamic-field": {
+    "name": "*_ll",
+    "type": "latitude_longitude",
+    "indexed": true,
+    "stored": true
+  },
+  "add-dynamic-field": {
+    "name": "*_i",
+    "type": "integer",
+    "indexed": true,
+    "stored": true
+  },
+  "add-dynamic-field": {
+    "name": "*_s",
+    "type": "string",
+    "indexed": true,
+    "stored": true
+  },
+  "add-dynamic-field": {
+    "name": "*_l",
+    "type": "long",
+    "indexed": true,
+    "stored": true
+  },
+  "add-dynamic-field": {
+    "name": "*_t",
+    "type": "text",
+    "indexed": true,
+    "stored": true
+  },
+  "add-dynamic-field": {
+    "name": "*_b",
+    "type": "boolean",
+    "indexed": true,
+    "stored": true
+  },
+  "add-dynamic-field": {
+    "name": "*_f",
+    "type": "float",
+    "indexed": true,
+    "stored": true
+  },
+  "add-dynamic-field": {
+    "name": "*_d",
+    "type": "double",
+    "indexed": true,
+    "stored": true
+  },
+  "add-copy-field": {
+    "source": "categories",
+    "dest": "autocomplete"
+  },
+  "add-copy-field": {
+    "source": "categories",
+    "dest": "categoriessrch"
+  },
+  "add-copy-field": {
+    "source": "categories",
+    "dest": "spell"
+  },
+  "add-copy-field": {
+    "source": "categories",
+    "dest": "text"
+  },
+  "add-copy-field": {
+    "source": "comments",
+    "dest": "autocomplete"
+  },
+  "add-copy-field": {
+    "source": "comments",
+    "dest": "spell"
+  },
+  "add-copy-field": {
+    "source": "comments",
+    "dest": "text"
+  },
+  "add-copy-field": {
+    "source": "content",
+    "dest": "autocomplete"
+  },
+  "add-copy-field": {
+    "source": "content",
+    "dest": "spell"
+  },
+  "add-copy-field": {
+    "source": "content",
+    "dest": "text"
+  },
+  "add-copy-field": {
+    "source": "permalink",
+    "dest": "text"
+  },
+  "add-copy-field": {
+    "source": "tags",
+    "dest": "autocomplete"
+  },
+  "add-copy-field": {
+    "source": "tags",
+    "dest": "spell"
+  },
+  "add-copy-field": {
+    "source": "tags",
+    "dest": "tagssrch"
+  },
+  "add-copy-field": {
+    "source": "tags",
+    "dest": "text"
+  },
+  "add-copy-field": {
+    "source": "title",
+    "dest": "autocomplete"
+  },
+  "add-copy-field": {
+    "source": "title",
+    "dest": "spell"
+  },
+  "add-copy-field": {
+    "source": "title",
+    "dest": "text"
+  }
+}

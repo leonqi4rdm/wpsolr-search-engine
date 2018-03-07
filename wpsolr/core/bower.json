@@ -1,0 +1,21 @@
+{
+  "name": "wpsolr-search-engine",
+  "homepage": "https://github.com/eostis-sarl/wpsolr-search-engine",
+  "authors": [
+    "gotosolr"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jsurl": "*"
+  }
+}

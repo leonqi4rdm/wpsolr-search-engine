@@ -1,0 +1,58 @@
+{
+  "index": {
+    "analysis": {
+      "filter": {
+        "stemmer": {
+          "type": "stemmer",
+          "language": "english"
+        },
+        "autocompleteFilter": {
+          "max_shingle_size": "5",
+          "min_shingle_size": "2",
+          "type": "shingle"
+        },
+        "stopwords": {
+          "type": "stop",
+          "stopwords": [
+            "_english_"
+          ]
+        }
+      },
+      "analyzer": {
+        "wpsolr_analyser_did_you_mean": {
+          "filter": [
+            "lowercase"
+          ],
+          "char_filter": [
+            "html_strip"
+          ],
+          "type": "custom",
+          "tokenizer": "standard"
+        },
+        "wpsolr_analyser_autocomplete": {
+          "filter": [
+            "lowercase",
+            "autocompleteFilter"
+          ],
+          "char_filter": [
+            "html_strip"
+          ],
+          "type": "custom",
+          "tokenizer": "standard"
+        },
+        "default": {
+          "filter": [
+            "lowercase",
+            "stopwords",
+            "stemmer"
+          ],
+          "char_filter": [
+            "html_strip"
+          ],
+          "type": "custom",
+          "tokenizer": "standard"
+        }
+      }
+    }
+  }
+}

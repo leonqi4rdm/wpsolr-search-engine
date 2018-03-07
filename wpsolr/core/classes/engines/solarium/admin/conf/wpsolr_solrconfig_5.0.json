@@ -1,0 +1,103 @@
+[
+  {
+    "update-searchcomponent": {
+      "name": "suggest",
+      "class": "solr.SpellCheckComponent",
+      "spellchecker": {
+        "name": "suggest",
+        "field": "autocomplete",
+        "classname": "org.apache.solr.spelling.suggest.Suggester",
+        "lookupImpl": "org.apache.solr.spelling.suggest.tst.TSTLookup",
+        "storeDir": "suggest_idx",
+        "threshold": 0.005,
+        "buildOnCommit": "true"
+      }
+    }
+  },
+  {
+    "update-searchcomponent": {
+      "name": "spellcheck",
+      "class": "solr.SpellCheckComponent",
+      "queryAnalyzerFieldType": "text_general",
+      "spellchecker": [
+        {
+          "name": "default",
+          "field": "spell",
+          "classname": "solr.DirectSolrSpellChecker",
+          "distanceMeasure": "internal",
+          "accuracy": 0.5,
+          "maxEdits": 2,
+          "minPrefix": 1,
+          "maxInspections": 5,
+          "minQueryLength": 4,
+          "maxQueryFrequency": 0.01
+        },
+        {
+          "name": "wordbreak",
+          "classname": "solr.WordBreakSolrSpellChecker",
+          "field": "spell",
+          "combineWords": "true",
+          "breakWords": "true",
+          "maxChanges": 10
+        }
+      ]
+    }
+  },
+  {
+    "update-requesthandler": {
+      "name": "/select",
+      "class": "solr.SearchHandler",
+      "defaults": {
+        "echoParams": "explicit",
+        "rows": 10,
+        "df": "text",
+        "spellcheck": "off"
+      },
+      "last-components": [
+        "spellcheck"
+      ]
+    }
+  },
+  {
+    "update-requesthandler": {
+      "startup": "lazy",
+      "name": "/spell",
+      "class": "solr.SearchHandler",
+      "defaults": {
+        "df": "spell",
+        "spellcheck.dictionary": [
+          "default",
+          "wordbreak"
+        ],
+        "spellcheck": "on",
+        "spellcheck.extendedResults": "true",
+        "spellcheck.count": "10",
+        "spellcheck.alternativeTermCount": "5",
+        "spellcheck.maxResultsForSuggest": "5",
+        "spellcheck.collate": "true",
+        "spellcheck.collateExtendedResults": "true",
+        "spellcheck.maxCollationTries": "10",
+        "spellcheck.maxCollations": "5"
+      },
+      "last-components": [
+        "spellcheck"
+      ]
+    }
+  },
+  {
+    "add-requesthandler": {
+      "name": "/suggest",
+      "class": "org.apache.solr.handler.component.SearchHandler",
+      "defaults": {
+        "spellcheck": "true",
+        "spellcheck.dictionary": "suggest",
+        "spellcheck.onlyMorePopular": "true",
+        "spellcheck.count": "5",
+        "spellcheck.collate": "true"
+      },
+      "components": [
+        "suggest"
+      ]
+    }
+  }
+]
