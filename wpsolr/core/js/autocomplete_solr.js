@@ -4,14 +4,14 @@ var wpsolr_ajax_timer;
  * Remove an element from an array
  */
  
-Array.prototype.remove = function (value) {
+/*Array.prototype.remove = function (value) {
     if (this.indexOf(value) !== -1) {
         this.splice(this.indexOf(value), 1);
         return true;
     } else {
         return false;
     }
-}
+}*/
 
 /**
  * Change the value of a url parameter, without reloading the page.
