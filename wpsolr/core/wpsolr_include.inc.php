@@ -108,6 +108,69 @@ if ( WPSOLR_Service_Container::getOption()->get_index_is_real_time() ) {
 	}
 }
 
+/*
+ * Wp-cron call to index Solr documents
+ */
+function cron_solr_index_data() {
+
+	$option_indexes_object = new WPSOLR_Option_Indexes();
+	$indexes = [];
+	foreach ( $option_indexes_object->get_indexes() as $index_indice => $index ) {
+		$indexes[ $index_indice ] = isset( $index['index_name'] ) ? $index['index_name'] : 'Index with no name';
+	}
+	$current_index = key( $indexes );
+
+	try {
+
+		set_error_handler( 'wpsolr_my_error_handler' );
+		register_shutdown_function( 'wpsolr_fatal_error_shutdown_handler' );
+
+		// Indice of Solr index to index
+		$solr_index_indice = $current_index;
+
+		// Batch size
+		$batch_size = 300;
+
+		// nb of document sent until now
+		$nb_results = 0;
+
+		// Debug infos displayed on screen ?
+		$is_debug_indexing = false;
+
+		// Re-index all the data ?
+		$is_reindexing_all_posts = false;
+
+
+		// Stop indexing ?
+		$is_stopping = false;
+
+		$solr = WPSOLR_IndexSolariumClient::create( $solr_index_indice );
+
+		$process_id = 'wpsolr-cron';
+
+
+		$res_final = $solr->index_data( $is_stopping, $process_id, null, $batch_size, null, $is_debug_indexing );
+
+		// Increment nb of document sent until now
+		$res_final['nb_results'] += $nb_results;
+
+		echo wp_json_encode( $res_final );
+
+	} catch ( Exception $e ) {
+
+		echo wp_json_encode(
+			[
+				'nb_results'        => 0,
+				'status'            => $e->getCode(),
+				'message'           => htmlentities( $e->getMessage() ),
+				'indexing_complete' => false,
+			]
+		);
+
+	}
+
+}
+
 /**
  * Reindex a post when one of it's comment is updated.
  *
