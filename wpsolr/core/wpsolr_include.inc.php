@@ -1,5 +1,6 @@
 <?php
 
+use wpsolr\core\classes\engines\solarium\WPSOLR_IndexSolariumClient;
 use wpsolr\core\classes\engines\solarium\WPSOLR_SearchSolariumClient;
 use wpsolr\core\classes\engines\WPSOLR_AbstractIndexClient;
 use wpsolr\core\classes\extensions\indexes\WPSOLR_Option_Indexes;
@@ -109,7 +110,7 @@ if ( WPSOLR_Service_Container::getOption()->get_index_is_real_time() ) {
 }
 
 /*
- * Wp-cron call to index Solr documents
+ * Wp-cron call to index Solr documents, 200 per call
  */
 function cron_solr_index_data() {
 
@@ -129,7 +130,7 @@ function cron_solr_index_data() {
 		$solr_index_indice = $current_index;
 
 		// Batch size
-		$batch_size = 300;
+		$batch_size = 200;
 
 		// nb of document sent until now
 		$nb_results = 0;
@@ -156,6 +157,10 @@ function cron_solr_index_data() {
 
 		echo wp_json_encode( $res_final );
 
+		$models = $solr->get_models();
+
+		$solr->unlock_models($process_id, $models);
+
 	} catch ( Exception $e ) {
 
 		echo wp_json_encode(
@@ -170,6 +175,26 @@ function cron_solr_index_data() {
 	}
 
 }
+
+/*
+ * Solr Wp-cron recurrence set up, every 5 minutes or 15 minutes
+ */
+function wpsolr_add_cron_recurrence_interval( $schedules ) {
+ 
+    $schedules['every_three_minutes'] = array(
+            'interval'  => 300,
+            'display'   => __( 'Every 5 Minutes', 'rdm-solr' )
+    );
+ 
+    $schedules['every_fifteen_minutes'] = array(
+            'interval'  => 900,
+            'display'   => __( 'Every 15 Minutes', 'rdm-solr' )
+    );  
+     
+    return $schedules;
+}
+add_filter( 'cron_schedules', 'wpsolr_add_cron_recurrence_interval' );
+
 
 /**
  * Reindex a post when one of it's comment is updated.
