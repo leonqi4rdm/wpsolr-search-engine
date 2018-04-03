@@ -181,7 +181,7 @@ function cron_solr_index_data() {
  */
 function wpsolr_add_cron_recurrence_interval( $schedules ) {
  
-    $schedules['every_three_minutes'] = array(
+    $schedules['every_five_minutes'] = array(
             'interval'  => 300,
             'display'   => __( 'Every 5 Minutes', 'rdm-solr' )
     );
