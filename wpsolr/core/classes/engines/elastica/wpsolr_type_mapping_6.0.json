@@ -92,35 +92,28 @@
   ],
   "properties": {
     "id": {
-      "type": "keyword",
-      "include_in_all": false
+      "type": "keyword"
     },
     "PID": {
-      "type": "keyword",
-      "include_in_all": false
+      "type": "keyword"
     },
     "blogid": {
-      "type": "keyword",
-      "include_in_all": false
+      "type": "keyword"
     },
     "blogdomain": {
-      "type": "keyword",
-      "include_in_all": false
+      "type": "keyword"
     },
     "blogpath": {
-      "type": "keyword",
-      "include_in_all": false
+      "type": "keyword"
     },
     "wp": {
-      "type": "keyword",
-      "include_in_all": false
+      "type": "keyword"
     },
     "permalink": {
       "type": "keyword",
       "copy_to": [
         "text"
-      ],
-      "include_in_all": false
+      ]
     },
     "title": {
       "type": "text",
@@ -128,8 +121,7 @@
         "text",
         "spell",
         "autocomplete"
-      ],
-      "include_in_all": false
+      ]
     },
     "content": {
       "type": "text",
@@ -137,16 +129,13 @@
         "text",
         "spell",
         "autocomplete"
-      ],
-      "include_in_all": false
+      ]
     },
     "numcomments": {
-      "type": "integer",
-      "include_in_all": false
+      "type": "integer"
     },
     "comments": {
-      "type": "text",
-      "include_in_all": false
+      "type": "text"
     },
     "categories": {
       "type": "text",
@@ -154,12 +143,10 @@
         "text",
         "spell",
         "autocomplete"
-      ],
-      "include_in_all": false
+      ]
     },
     "categoriessrch": {
-      "type": "text",
-      "include_in_all": false
+      "type": "text"
     },
     "tags": {
       "type": "keyword",
@@ -167,36 +154,28 @@
         "text",
         "spell",
         "autocomplete"
-      ],
-      "include_in_all": false
+      ]
     },
     "tagssrch": {
-      "type": "text",
-      "include_in_all": false
+      "type": "text"
     },
     "author": {
-      "type": "keyword",
-      "include_in_all": false
+      "type": "keyword"
     },
     "type": {
-      "type": "keyword",
-      "include_in_all": false
+      "type": "keyword"
     },
     "date": {
-      "type": "date",
-      "include_in_all": false
+      "type": "date"
     },
     "modified": {
-      "type": "date",
-      "include_in_all": false
+      "type": "date"
     },
     "displaydate": {
-      "type": "date",
-      "include_in_all": false
+      "type": "date"
     },
     "displaymodified": {
-      "type": "date",
-      "include_in_all": false
+      "type": "date"
     },
     "spell": {
       "type": "text",
@@ -206,14 +185,7 @@
       "type": "completion"
     },
     "text": {
-      "type": "text",
-      "include_in_all": false
-    }
-  },
-  "properties_ingest_attachment": {
-    "id": {
-      "type": "keyword",
-      "include_in_all": false
+      "type": "text"
     }
   }
 }

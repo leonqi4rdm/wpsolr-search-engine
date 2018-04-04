@@ -150,7 +150,7 @@ class WPSOLR_Solr_Admin_Api_Core extends WPSOLR_Solr_Admin_Api_Abstract {
 					$message .= sprintf( '<li> Download the zip file: <br/><br/>%s</li><br/>',
 						sprintf( self::HTML_PRE_CODE_TEMPLATE,
 							'wpsolr_cmd_curl',
-							sprintf( 'curl -L -o %s.zip https://www.dropbox.com/s/151md4vn1kalhhu/wpsolr-v5.zip?dl=0', $dir_to_create )
+							sprintf( 'curl -L -o %s.zip https://www.dropbox.com/s/5qvzuf4iemokir9/wpsolr-v5.zip?dl=0', $dir_to_create ) // Directory wpsolr_files/5.0.1
 						)
 					);
 

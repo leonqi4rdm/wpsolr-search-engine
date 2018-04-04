@@ -616,7 +616,9 @@
 												$dis_text = $buil_fac;
 											}
 
-											if ( ! in_array( $buil_fac, $selected_array ) ) {
+											if ( ! in_array( $buil_fac, $selected_array )
+											     && ( WpSolrSchema::_SOLR_DYNAMIC_TYPE_TEXT !== WpSolrSchema::get_custom_field_dynamic_type( $buil_fac ) ) // Long texts cannot be faceted (due to analysers)
+											) {
 
 												echo "<li id='$buil_fac' class='ui-state-default facets'>$dis_text
                                                                                                     <img src='$img_path'  class='plus_icon' style='display:inline' title='Click to Add the Facet'>

@@ -1,26 +1,154 @@
-=== Filter millions of posts, custom fields, categories and tags - WPSOLR ===
+=== Search & Filter millions of posts, custom fields, categories and tags with Elasticsearch and Solr server - WPSOLR ===
 Contributors: wpsolr
-Current Version: 19.9
+Current Version: 20.0
 Author: wpsolr
 Author URI: https://www.wpsolr.com/
 Tags: search, listify, YITH WooCommerce Ajax Search, yoast seo, all in one seo pack, geolocation, TablePress search, Solr in WordPress, wordpress search, bbPress search, WooCommerce search, ACF search, coupon search, affiliate feed search, relevance, Solr search, fast search, wpsolr, apache solr, better search, site search, category search, search bar, comment search, filtering, relevant search, custom search, filters, page search, autocomplete, post search, online search, search, spell checking, search integration, did you mean, typeahead, search replacement, suggestions, search results, search by category, multi language, seo, lucene, solr, suggest, apache lucene
 Requires at least: 3.7.1
-Tested up to: 4.8.2
-Stable tag: 19.9
+Tested up to: 4.9.1
+Stable tag: 20.0
 
-Filter millions of posts, custom fields, categories and tags. Display your search page in milliseconds.
+Search and filter in millions of post types. Unlimited free usage.
+No subscription on a remote service required.
+Keep privacy: your data stays on your server.
 
 == Description ==
-WPSOLR is a pure filter & search plugin working with your Elasticsearch or Solr server (if you're looking for a hosted search, you should have a look to solutions like Algolia, swiftype, searchIQ, or Instantsearch+).
 
-This free plugin brings a hundred free Enterprise search features, usually reserved to sites with deep pockets:
-dynamic fiters (facets), attachment files (pdf, .doc, .xls ...), multi-domains search, infinite scroll, integration with your theme search page, boosts, facets with custom fields ...
+[youtube https://youtu.be/41neqY5s1_U&hd=1]
 
+= Notice of deprecation =
 
-If necessary, <a href="https://www.wpsolr.com/pricing/?org=wordpress&cmp=chat">buy extensions and support</a> to work with your favorite plugins.
+From version 20.0, the free plugin will not be supported or updated any more.
 
-= Search that gives you the competitive edge =
-[youtube https://www.youtube.com/playlist?list=PL5aStiCXsx-yHhZ7qixtpSszCcXZTQUyW&hd=1]
+For a while, the number of active installations has not increased, despite an increasing number of downloads.
+This is a sure sign that people trying the free plugin do not have the technical skills to set it up, or customize it, to their needs. Despite our answers to every forum support question.
+
+So, we decided to concentrate on helping users with our <a href="https://www.wpsolr.com/">WPSOLR PRO plugin</a>.
+
+= Former description =
+100% free plugin to search and filter in millions of post types.
+
+No subscription on a remote service required.
+
+Respects privacy: your data stays on your server.
+
+Works transparently with your self hosted free <a href="https://www.elastic.co/">Elasticsearch</a> and free <a href="http://lucene.apache.org/solr/">Apache Solr</a> server. Just install <a href="https://www.wpsolr.com/guide/configuration-step-by-step-schematic/install-elasticsearch/">Elasticsearch</a> or <a href="https://www.wpsolr.com/guide/configuration-step-by-step-schematic/install-apache-solr/">Apache Solr</a>, the plugin takes care of the rest.
+
+Tons of <a href="https://www.wpsolr.com/guide/video-gallery-introduction/">video tutorials</a>.
+
+= WPSOLR + Yith Woocommerce Ajax Search (free) + Live Demo 1 =
+[youtube https://youtu.be/hoxMqroeW24&hd=1]
+
+= WPSOLR + Yith Woocommerce Ajax Search (free) + Elasticsearch =
+[youtube https://youtu.be/5NJhyTbfugQ&hd=1]
+
+= WPSOLR + Facet layout "Selectbox" + TwentySixteen + SolrCloud =
+[youtube https://youtu.be/WIHGiz9GQkQ&hd=1]
+
+= WPSOLR + Facet layout "Selectbox" + Ajax + SolrCloud =
+[youtube https://youtu.be/2V0CV1-nHn0&hd=1]
+
+= WPSOLR + TwentySixteen + SolrCloud =
+[youtube https://youtu.be/DDDZz_-0M24&hd=1]
+
+= WPSOLR + TwentySixteen + Solr =
+[youtube https://youtu.be/96-r0UrehhA&hd=1]
+
+= WPSOLR + TwentySixteen + Elasticsearch =
+[youtube https://youtu.be/SP9pn6p_pFs&hd=1]
+
+= WPSOLR + TwentySixteen + Gotosolr Solr hosting =
+[youtube https://youtu.be/R0NTl78zYLo&hd=1]
+
+= WPSOLR + TwentySixteen + Amazon Elasticsearch hosting =
+[youtube https://youtu.be/LAg6f6vAdvk&hd=1]
+
+= WPSOLR + Ajax + Searchly Elasticsearch hosting =
+[youtube https://youtu.be/uSDJ7CMhaOc&hd=1]
+
+= WPSOLR + Ajax + Bonsai Elasticsearch hosting =
+[youtube https://youtu.be/qNoSJIKlRBM&hd=1]
+
+= WPSOLR + Ajax + Amazon Elasticsearch hosting =
+[youtube https://youtu.be/Bxbqck2IyIU&hd=1]
+
+= WPSOLR + Ajax + Solr =
+[youtube https://youtu.be/tqudQ8Nr2Nk&hd=1]
+
+= WPSOLR + Ajax + ElasticSearch =
+[youtube https://youtu.be/cEjR2IN23cU&hd=1]
+
+= WPSOLR PRO + Listify Theme + Apache Solr =
+[youtube https://youtu.be/O7HuV8NG2oI&hd=1]
+
+= WPSOLR PRO + Listify Theme + Elasticsearch =
+[youtube https://youtu.be/nHr-EK3iE10&hd=1]
+
+= WPSOLR PRO + Advanced Scoring + Elasticsearch =
+[youtube https://youtu.be/LAcVOW8XIwo&hd=1]
+
+= WPSOLR PRO + Crontab + Elasticsearch =
+[youtube https://youtu.be/8JhxPowfDpQ&hd=1]
+
+= WPSOLR PRO + Polylang + Ajax + Elasticsearch =
+[youtube https://youtu.be/zJko6PSt3Mk&hd=1]
+
+= WPSOLR PRO + WPML + Ajax + Elasticsearch =
+[youtube https://youtu.be/JRbr-e7RbSc&hd=1]
+
+= WPSOLR PRO + ACF PRO + Layout Types + TwentySixteen + Elasticsearch =
+[youtube https://youtu.be/hhIGicQBSds&hd=1]
+
+= WPSOLR PRO + ACF PRO + Content Types + TwentySixteen + Elasticsearch =
+[youtube https://youtu.be/6QZF2NHlLuY&hd=1]
+
+= WPSOLR PRO + ACF PRO + Choice Types + TwentySixteen + Elasticsearch =
+[youtube https://youtu.be/GRhje7QJmlU&hd=1]
+
+= WPSOLR PRO + ACF PRO + Basic Types + TwentySixteen + Elasticsearch =
+[youtube https://youtu.be/1dseUrBzYdg&hd=1]
+
+= WPSOLR PRO + WooCommerce + All In One SEO Pack + TwentySixteen + Solr =
+[youtube https://youtu.be/WxLHAAlnnf4&hd=1]
+
+= WPSOLR PRO + All In One SEO Pack + TwentySixteen + Solr =
+[youtube https://youtu.be/tvB3ekKd0Jw&hd=1]
+
+= WPSOLR PRO +  WooCommerce + Yoast SEO + TwentySixteen theme + local SolrCloud =
+[youtube https://youtu.be/2qTwGbviJpI&hd=1]
+
+= WPSOLR PRO + Yoast SEO + TwentySixteen + SolrCloud =
+[youtube https://youtu.be/4b1aZ2cucC4&hd=1]
+
+= WPSOLR PRO + Facet layout "Select2 box" + TwentySixteen + Elasticsearch =
+[youtube https://youtu.be/GY-lzue03Zc&hd=1]
+
+= WPSOLR PRO + Facet layout "Select2 box" + TwentySixteen + SolrCloud =
+[youtube https://youtu.be/veXOpCKQLVM&hd=1]
+
+= WPSOLR PRO + Facet layout "Select2 box" + Ajax + SolrCloud =
+[youtube https://youtu.be/rcJMfZud9-A&hd=1]
+
+= WPSOLR PRO + Facet layout "Select2 box" + Ajax + Elasticsearch =
+[youtube https://youtu.be/gRt9coy0Xdo&hd=1]
+
+= WPSOLR PRO + Facet layout "Ion.RangeSlider" + Ajax + TwentySixteen + Elasticsearch =
+[youtube https://youtu.be/ZplwENAGFF8&hd=1]
+
+= WPSOLR PRO + Facet layout "Ion.RangeSlider" + Ajax + TwentySixteen + SolrCloud =
+[youtube https://youtu.be/JQrK6aPhBIM&hd=1]
+
+= Live demo of a website search with 700K posts powered by WPSOLR =
+[youtube https://youtu.be/sttS9fD6DnE&hd=1]
+
+= Live demo of a WooCommerce search with 15K products powered by WPSOLR PRO (with the WooCommerce extension) =
+[youtube https://youtu.be/YCh9OqXJ3Gw&hd=1]
+
+= Create a test Elasticsearch index in 2 clicks with WPSOLR =
+[youtube https://youtu.be/7tMFdn_QwMo&hd=1]
+
+= Create a test Solr index in 2 clicks =
+[youtube https://youtu.be/NOniTV-Ahgs&hd=1]
 
 = Easily manage Elasticsearch from WPSOLR =
 [youtube https://youtu.be/NMRlvtd47Rg&hd=1]
@@ -30,6 +158,41 @@ If necessary, <a href="https://www.wpsolr.com/pricing/?org=wordpress&cmp=chat">b
 
 = Easily manage Apache Solr from WPSOLR =
 [youtube https://youtu.be/QWKioNnz9nU&hd=1]
+
+
+With the 100% free plugin, you get free unlimited searches and free unlimited storage with:
+- Free self hosted search, unlike managed solutions like Algolia, swiftype, searchIQ, or Instantsearch+
+- Transparent, real-time integration to Elasticsearch and Apache Solr
+- Suggestions as you type
+- Dynamic fiters (facets) on custom fields, taxonomies (tags), categories
+- Search in files (pdf, .doc, .xls ...)
+- Multi-domains search
+- Infinite scroll
+- Transparent integration with your theme search page (no coding required)
+- Boosts to choose which results you want to show first
+- Integration with YITH Ajax Search (Free version) : speed up suggestions
+
+If necessary, <a href="https://www.wpsolr.com/pricing/?org=wordpress&cmp=chat">buy extensions and support</a> to extend your search with your favorite plugins or themes:
+- Listify Theme (boost Listify Theme search speed)
+- Embed Any Document (search in embedded documents)
+- Google Doc Embedder (search in embedded documents)
+- Yoast SEO (permalinks and metas on search urls with filters)
+- ACF PRO (search in many ACF field types, including repeaters, flexible contents, tabs, clones)
+- Advanced Facets layouts (custom extension to add sliders, color pickers, numeric ranges and select boxes layouts)
+- Advanced scoring (custom extension to sort results by date while keeping relevant results)
+- All in One SEO (permalinks and metas on search urls with filters)
+- bbPress (boost forum searches)
+- Cron scheduling (custom extension to trigger reindexing from crontabs)
+- Geolocation (custom extension to add distance and sort by distance to results)
+- Groups (show results according to users's rights)
+- PDF Embedder (search in embedded documents)
+- Polylang (search with translations)
+- s2Member (show results according to users's rights)
+- TablePress (search in tables)
+- Toolset Types (rewrite types labels)
+- WP All Import (permalinks and metas on search urls with filters)
+- WooCommerce (keep your front-end theme search template, but speed up search in products, taxonomies, attributes, and variations)
+- WPML (search with translations)
 
 = Search is everything =
 Search is everything and everywhere today. Yahoo directory was king, until Google came with it's incredible search technology. Can you imagine how you would manage without it ?
@@ -151,6 +314,11 @@ Installation procedure for Apache Solr: see FAQ section.
 47. 47) Admin: Give sortable custom fields a Solr type.
 
 == Changelog ==
+
+= 20.0 =
+* Tested with WordPress 4.9.1, PHP 5.5, Apache Solr 7.1.0, Elasticsearch 6.1.1
+* Fix index creation with Elasticsearch 6.x: "[include_in_all] is not allowed for indices created on or after version 6.0.0 as [_all] is deprecated"
+* Add field type text "_t" to store text length > 32K. Fix error: Document contains at least one immense term in field=xxx (whose UTF8 encoding is longer than the max length 32766)
 
 = 19.9 =
 * Security fix

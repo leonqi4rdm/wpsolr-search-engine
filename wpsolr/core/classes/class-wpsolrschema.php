@@ -20,6 +20,7 @@ class WpSolrSchema {
 	const EXTENSION_SEPARATOR = '_';
 
 	// Solr dynamic types extensions
+	const _SOLR_DYNAMIC_TYPE_TEXT = '_t';
 	const _SOLR_DYNAMIC_TYPE_STRING = '_str';
 	const _SOLR_DYNAMIC_TYPE_STRING1 = '_srch';
 	const _SOLR_DYNAMIC_TYPE_S = '_s';
@@ -119,6 +120,13 @@ class WpSolrSchema {
 					'label'      => 'Text, sortable',
 					'sortable'   => true,
 					'multivalue' => false,
+					'disabled'   => '',
+					'help_id'    => WPSOLR_Help::HELP_SCHEMA_TYPE_DATE,
+				],
+				self::_SOLR_DYNAMIC_TYPE_TEXT    => [
+					'label'      => 'Text, if too long for other text types (cannot be used as facet)',
+					'sortable'   => false,
+					'multivalue' => true,
 					'disabled'   => '',
 					'help_id'    => WPSOLR_Help::HELP_SCHEMA_TYPE_DATE,
 				],
