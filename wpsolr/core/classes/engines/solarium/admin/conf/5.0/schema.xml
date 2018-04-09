@@ -27,6 +27,7 @@
             </analyzer>
         </fieldType>
 
+        <!-- Default English analyser. Replace or change with your current language analysers -->
         <fieldType name="text" class="solr.TextField" positionIncrementGap="100">
             <analyzer type="index">
                 <tokenizer class="solr.WhitespaceTokenizerFactory"/>
@@ -99,7 +100,7 @@
         <field name="numcomments" type="integer" indexed="true" stored="true" docValues="true"/>
         <field name="comments" type="text" indexed="true" stored="true" multiValued="true"/>
 
-        <field name="categories" type="string" indexed="true" stored="true" multiValued="true" docValues="true"/>
+        <field name="categories" type="text" indexed="true" stored="true" multiValued="true"/>
         <field name="categoriessrch" type="text_lws" indexed="true" stored="false" multiValued="true"/>
 
         <field name="tags" type="string" indexed="true" stored="true" multiValued="true" docValues="true"/>

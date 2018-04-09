@@ -40,6 +40,7 @@ use wpsolr\core\classes\WPSOLR_Events;
                               SELECT distinct meta_value
                                   FROM {$wpdb->prefix}postmeta
                                   WHERE meta_key = %s
+                                  AND char_length(meta_value) < 100 /* Prevent overflow with huge custom field values */
                                   ORDER BY meta_value ASC
                                   LIMIT 50
                                   ", $dis_text )

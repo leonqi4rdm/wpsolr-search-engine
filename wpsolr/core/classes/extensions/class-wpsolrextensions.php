@@ -1101,7 +1101,7 @@ class WpSolrExtensions {
 	 */
 	protected function extract_strings_to_translate_for_all_extensions( &$translations = [] ) {
 
-		// Translate SEO facet templates
+		// Translate SEO facet template(s)
 		$labels = WPSOLR_Service_Container::getOption()->get_facets_seo_permalink_templates();
 		if ( is_array( $labels ) && ! empty( $labels ) ) {
 			foreach ( $labels as $facet_name => $facet_label ) {

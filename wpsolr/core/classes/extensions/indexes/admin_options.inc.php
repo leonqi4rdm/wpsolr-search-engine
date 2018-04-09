@@ -66,6 +66,15 @@ $form_data                             = WpSolrExtensions::extract_form_data( $i
 		$is_new_index    = ! $option_object->has_index( $subtab );
 		$class_collapsed = '';
 		if ( $is_new_index ) {
+
+		    // Prevent rare zombie deleted indexes error
+			if ( empty( $option_data ) || ! is_array( $option_data ) ) {
+				$option_data = [];
+			}
+			if ( empty( $option_data['solr_indexes'] ) || ! is_array( $option_data['solr_indexes'] ) ) {
+				$option_data['solr_indexes'] = [];
+			}
+
 			$option_data['solr_indexes'][ $subtab ] = [];
 			$class_collapsed                        = $option_object->has_index_type_temporary() ? '' : 'wpsolr_collapsed';
 
@@ -398,7 +407,8 @@ $form_data                             = WpSolrExtensions::extract_form_data( $i
                         <div class="wdm_row">
                             <div class='col_left'>Server Host</div>
                             <div class='col_right'>
-                                <input type='text' class="wpsolr_blur" <?php echo $is_index_readonly ? 'readonly' : ''; ?>
+                                <input type='text'
+                                       class="wpsolr_blur" <?php echo $is_index_readonly ? 'readonly' : ''; ?>
                                        placeholder="localhost or ip adress or hostname. No 'http', no '/', no ':'"
                                        name="<?php echo $option_name ?>[solr_indexes][<?php echo $index_indice ?>][index_host]"
 									<?php echo $subtab === $index_indice ? "id='index_host'" : "" ?>

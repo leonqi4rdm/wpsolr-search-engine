@@ -16,7 +16,7 @@ use wpsolr\core\classes\utilities\WPSOLR_Option;
 use wpsolr\core\classes\WPSOLR_Events;
 
 // Definitions
-define( 'WPSOLR_PLUGIN_VERSION', '19.9' );
+define( 'WPSOLR_PLUGIN_VERSION', '20.0' );
 define( 'WPSOLR_PLUGIN_FILE', __FILE__ );
 define( 'WPSOLR_PLUGIN_BASE_NAME', plugin_basename( __FILE__ ) );
 define( 'WPSOLR_DEFINE_PLUGIN_DIR_URL', substr_replace( plugin_dir_url( __FILE__ ), '', - 1 ), false );

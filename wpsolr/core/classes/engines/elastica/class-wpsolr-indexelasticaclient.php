@@ -62,6 +62,7 @@ TAG;
 	 * @param $file
 	 *
 	 * @return string
+	 * @throws \Exception
 	 */
 	protected function search_engine_client_extract_document_content( $file ) {
 
@@ -69,10 +70,10 @@ TAG;
 		$decoded_attached_value = '';
 
 		// Workaround to the lack of ingest api in Elastica: https://github.com/ruflin/Elastica/issues/1248#issuecomment-321464511
-		$document = new \Elastica\Document( $this->WPSOLR_DOC_ID_ATTACHMENT, [], $this->get_elastica_type_attachment() );
+		$document = new \Elastica\Document( $this->WPSOLR_DOC_ID_ATTACHMENT, [], $this->get_elastica_type() );
 		$document->addFile( 'data', $file );
 		$bulk = new \Elastica\Bulk( $this->search_engine_client );
-		$bulk->setType( $this->get_elastica_type_attachment() );
+		$bulk->setType( $this->get_elastica_type() );
 		$bulk->setRequestParam( 'pipeline', self::PIPELINE_INGEST_ATTACHMENT_ID );
 		$bulk->addDocument( $document );
 		try {
@@ -81,9 +82,6 @@ TAG;
 		} catch ( \Exception $e ) {
 
 			if ( false !== strpos( $e->getMessage(), sprintf( 'pipeline with id [%s] does not exist', self::PIPELINE_INGEST_ATTACHMENT_ID ) ) ) {
-
-				// Set (again) the attachment type to be sure it is compatible with the ingest plugin, not the old attachment type.
-				$this->index_attachment_mapping();
 
 				// Create our attachment pipeline as it does not exist yet.
 				$this->search_engine_client->request( sprintf( '_ingest/pipeline/%s', self::PIPELINE_INGEST_ATTACHMENT_ID ),
@@ -102,13 +100,20 @@ TAG;
 		}
 
 		if ( ! $result->hasError() ) {
-			$attached_document = $this->get_elastica_type_attachment()->getDocument( $this->WPSOLR_DOC_ID_ATTACHMENT, [ '_source' => 'attachment.content' ] );
+			$attached_document = $this->get_elastica_type()->getDocument( $this->WPSOLR_DOC_ID_ATTACHMENT, [ '_source' => 'attachment.content' ] );
 
 			$decoded_attached_array = $attached_document->getData();
 			if ( ! empty( $decoded_attached_array ) && ! empty( $decoded_attached_array['attachment'] ) && ! empty( $decoded_attached_array['attachment']['content'] ) ) {
 				$decoded_attached_value = $decoded_attached_array['attachment']['content'];
 			}
+
+		} else {
+
+			throw new \Exception( $result->getErrorMessage() );
 		}
+
+		// Get rid of the file: from ES 6.0, one cannot use anymore an attachment type to hide attached files.
+		$this->get_elastica_type()->deleteById( $this->WPSOLR_DOC_ID_ATTACHMENT );
 
 		return sprintf( '<body>%s</body>', $decoded_attached_value );
 	}

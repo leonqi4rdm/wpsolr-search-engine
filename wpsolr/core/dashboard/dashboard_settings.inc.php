@@ -270,12 +270,17 @@
 			$output     = 'names'; // or objects
 			$operator   = 'and'; // 'and' or 'or'
 			$taxonomies = get_taxonomies( $args, $output, $operator );
-			global $wpdb;
-			$keys = $wpdb->get_col( "
-                                                                    SELECT distinct meta_key
-                                                                    FROM $wpdb->postmeta
-                                                                    WHERE meta_key!='bwps_enable_ssl' 
-                                                                    ORDER BY meta_key" );
+            $index_custom_field = apply_filters('wpsolr_custom_field_indexing', false);
+            if($index_custom_field){
+                global $wpdb;
+    			$keys = $wpdb->get_col( "
+                                                                        SELECT distinct meta_key
+                                                                        FROM $wpdb->postmeta
+                                                                        WHERE meta_key!='bwps_enable_ssl' 
+                                                                        ORDER BY meta_key" );
+            }else{
+                $keys = array();
+            }
 
 			try {// Filter custom fields to be indexed.
 				$keys = apply_filters( WPSOLR_Events::WPSOLR_FILTER_INDEX_CUSTOM_FIELDS, $keys );
@@ -616,7 +621,9 @@
 												$dis_text = $buil_fac;
 											}
 
-											if ( ! in_array( $buil_fac, $selected_array ) ) {
+											if ( ! in_array( $buil_fac, $selected_array )
+											     && ( WpSolrSchema::_SOLR_DYNAMIC_TYPE_TEXT !== WpSolrSchema::get_custom_field_dynamic_type( $buil_fac ) ) // Long texts cannot be faceted (due to analysers)
+											) {
 
 												echo "<li id='$buil_fac' class='ui-state-default facets'>$dis_text
                                                                                                     <img src='$img_path'  class='plus_icon' style='display:inline' title='Click to Add the Facet'>

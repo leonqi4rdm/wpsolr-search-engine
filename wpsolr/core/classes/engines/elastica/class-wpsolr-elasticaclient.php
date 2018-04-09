@@ -17,8 +17,8 @@ trait WPSOLR_ElasticaClient {
 
 	protected $elastica_index;
 
-	protected $ELASTICA_MAPPING_FIELD_PROPERTIES_INGEST_ATTACHMENT = 'properties_ingest_attachment';
-	protected $FILE_CONF_TYPE_MAPPING = 'wpsolr_type_mapping_5.0.json';
+	protected $FILE_CONF_TYPE_MAPPING_5 = 'wpsolr_type_mapping_5.0.json';
+	protected $FILE_CONF_TYPE_MAPPING_6 = 'wpsolr_type_mapping_6.0.json';
 
 	/**
 	 * @return \Elastica\Index
@@ -40,14 +40,6 @@ trait WPSOLR_ElasticaClient {
 	public function get_elastica_type( $type = '' ) {
 		return $this->elastica_index->getType( ( empty( $type ) ) ? $this->wpsolr_type : $type );
 	}
-
-	/**
-	 * @return \Elastica\Type
-	 */
-	public function get_elastica_type_attachment() {
-		return $this->get_elastica_type( 'wpsolr_type_ingest_attachment' );
-	}
-
 
 	/**
 	 * @param $config
@@ -88,26 +80,33 @@ trait WPSOLR_ElasticaClient {
 	}
 
 	/**
-	 * Add/replace an attachment mapping to the index.
+	 * Retrieve the mapping file according to the version
 	 *
-	 * @param array $mapping_types
+	 * @return string
+	 * @throws \Exception
 	 */
-	protected function index_attachment_mapping( $mapping_types = [] ) {
+	protected function get_type_mapping_file() {
 
-		if ( empty( $mapping_types ) ) {
-			$mapping_types = $this->get_and_decode_configuration_file( $this->FILE_CONF_TYPE_MAPPING );
+		$version = $this->get_version();
+
+		return version_compare( $version, '6', '>=' ) ? $this->FILE_CONF_TYPE_MAPPING_6 : $this->FILE_CONF_TYPE_MAPPING_5;
+	}
+
+	/**
+	 * Retrieve the live Elasticsearch version
+	 *
+	 * @return string
+	 * @throws \Exception
+	 */
+	protected function get_version() {
+
+		$version = $this->search_engine_client->getVersion();
+
+		if ( version_compare( $version, '5', '<' ) ) {
+			throw new \Exception( sprintf( 'WPSOLR works only with Elasticsearch >= 5. Your version is %s.', $version ) );
 		}
 
-		$mapping = new \Elastica\Type\Mapping();
-		$mapping->setType( $this->get_elastica_type_attachment() );
-
-		// Set properties for field types and analysers
-		$mapping->setProperties(
-			$mapping_types[ $this->ELASTICA_MAPPING_FIELD_PROPERTIES_INGEST_ATTACHMENT ]
-		);
-
-		// Send mapping to type
-		$response = $mapping->send();
+		return $version;
 	}
 
 }

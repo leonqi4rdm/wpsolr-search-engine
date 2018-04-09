@@ -2,7 +2,7 @@
 /**
  * Plugin Name: WPSOLR
  * Description: Search like Google Site Search, Amazon or eBay - WPSOLR
- * Version: 19.9
+ * Version: 20.0
  * Author: wpsolr
  * Plugin URI: https://www.wpsolr.com
  * License: GPL2

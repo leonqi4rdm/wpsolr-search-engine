@@ -283,7 +283,7 @@ class WPSOLR_SearchElasticaClient extends WPSOLR_AbstractSearchClient {
 			$mapping = new \Elastica\Type\Mapping();
 			$mapping->setType( $elastica_type );
 
-			$mapping_types = $this->get_and_decode_configuration_file( $this->FILE_CONF_TYPE_MAPPING );
+			$mapping_types = $this->get_and_decode_configuration_file( $this->get_type_mapping_file() );
 
 			// No dynamic field types. Too unpredictable.
 			// https://www.elastic.co/guide/en/elasticsearch/guide/current/dynamic-mapping.html
@@ -302,11 +302,6 @@ class WPSOLR_SearchElasticaClient extends WPSOLR_AbstractSearchClient {
 			// Send mapping to type
 			$mapping->send();
 
-			/**
-			 * Define mapping for the attachment file (so it's never in any search results).
-			 *
-			 */
-			$this->index_attachment_mapping( $mapping_types );
 		}
 
 	}

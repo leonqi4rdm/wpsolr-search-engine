@@ -1634,6 +1634,8 @@ abstract class WPSOLR_AbstractSearchClient extends WPSOLR_AbstractEngineClient {
 					$search_field_name = WpSolrSchema::_FIELD_NAME_CATEGORIES_STR;
 				}
 
+				$search_field_name = WpSolrSchema::replace_field_name_extension( $search_field_name );
+
 				foreach ( preg_split( "/(\r\n|\n|\r)/", $search_field_term_boost_lines ) as $search_field_term_boost_line ) {
 
 					// Transform apache solr^2 in "apache solr"^2
@@ -1671,6 +1673,9 @@ abstract class WPSOLR_AbstractSearchClient extends WPSOLR_AbstractEngineClient {
 				// Field 'categories' are now treated as other fields (dynamic string type)
 				$search_field_name = WpSolrSchema::_FIELD_NAME_CATEGORIES_STR;
 			}
+
+
+			$search_field_name = WpSolrSchema::replace_field_name_extension( $search_field_name );
 
 			if ( '1' === $search_field_boost ) {
 
